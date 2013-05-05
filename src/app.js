@@ -3,12 +3,14 @@ $(function() {
     window.App = Ember.Application.create();
 
     App.ApplicationController = Ember.Controller.extend({
-        sources: ['designporn', 'earthporn'],
+        SOURCES: ['designporn', 'earthporn'],
+
+        IMAGE_PADDING: 30,
 
         init: function() {
             var width;
-            width = $("BODY").width();
-            this.getImagesForSubreddit(this.sources[0], width, this.renderImages);
+            width = $("BODY").width() - this.IMAGE_PADDING;
+            this.getImagesForSubreddit(this.SOURCES[0], width, this.renderImages);
         },
         
         getImagesForSubreddit: function(subreddit, width, callback) {
