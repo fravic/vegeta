@@ -1,7 +1,8 @@
 <html>
   <head>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+    <link rel="stylesheet/less" href="index.less">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
     </script>
     <script src="./lib/handlebars.js">
     </script>
@@ -13,19 +14,16 @@
     </script>
     <script src="./src/app.js">
     </script>
-
-    <link rel="stylesheet/less" href="index.less">
   </head>
   <body>
-    <div id="images">
   </body>
+
+  <script type="text/x-handlebars" data-template-name="imageList">
+    {{#each image in view.images}}
+    <div class="image">
+      <img {{bindAttr src="image"}}/>
+    </div>
+    {{/each}}
+  </script>
+
 </html>
-
-<script type="text/x-handlebars" data-template-name="imageList">
-  {{#each images}}
-  <div class="image">
-    <img src="{{this}}" />
-  </div>
-  {{/each}}
-</script>
-
