@@ -48,9 +48,14 @@
 BODY {
   margin: 0;
   background-color: #E0E0E0;
+
+  font-family: "Helvetica", sans-serif;
+  font-weight: lighter;
 }
 
 HEADER {
+  .transition(all, 0.3s, ease-in-out);
+
   position: fixed;
   top: 0;
   width: 100%;
@@ -58,6 +63,30 @@ HEADER {
   z-index: 11;
 
   background-color: rgba(0, 0, 0, .85);
+  color: white;
+
+  UL {
+    font-size: 30px;
+    margin: 25px 25px 0 18px;
+    border-top: 1px solid white;
+    padding-top: 25px;
+    overflow-y: scroll;
+    max-height: 100%;
+
+    LI {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+HEADER.fullHeight {
+  height: 100%;
+
+  .arrow {
+    transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -ms-transform: scaleY(-1);
+  }
 }
 
 .title {
@@ -65,13 +94,13 @@ HEADER {
   margin-top: 10px;
   margin-left: 15px;
 
-  font-family: "Helvetica", sans-serif;
   font-size: 50px;
   font-weight: 100;
-  color: white;
 }
 
 .arrow {
+  .transition(all, 0.3s, ease-in-out);
+
   float: right;
   width: 30px;
   height: 30px;
@@ -145,4 +174,8 @@ HEADER {
 
 .scroll-disabled {
   overflow: hidden;
+}
+
+.fullWidth {
+  width: 100%;
 }

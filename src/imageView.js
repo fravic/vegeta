@@ -6,8 +6,6 @@ $(function($) {
     app.ImageView = Backbone.View.extend({
         MAX_DRAG_X: 300,
 
-        templateName: 'image',
-
         initialize: function(a) {
             _.bindAll(this);
 
