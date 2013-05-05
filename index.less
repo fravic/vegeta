@@ -41,26 +41,149 @@
 
 // STYLES
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 BODY {
   margin: 0;
   background-color: #E0E0E0;
+
+  font-family: "Helvetica", sans-serif;
+  font-weight: lighter;
+}
+
+HEADER {
+  .transition(all, 0.3s, ease-in-out);
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 11;
+
+  background-color: rgba(0, 0, 0, .85);
+  color: white;
+
+  UL {
+    font-size: 30px;
+    margin: 25px 25px 0 15px;
+    border-top: 1px solid white;
+    padding-top: 25px;
+    overflow-y: scroll;
+    max-height: 100%;
+
+    LI {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+HEADER.fullHeight {
+  height: 100%;
+
+  .arrow {
+    transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -ms-transform: scaleY(-1);
+  }
+}
+
+.title {
+  float: left;
+  margin-top: 10px;
+  margin-left: 15px;
+
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.arrow {
+  .transition(all, 0.3s, ease-in-out);
+
+  float: right;
+  width: 25px;
+  height: 25px;
+  margin-top: 13px;
+  margin-right: 15px;
+  background-size: 25px;
+  background-image: url('./assets/arrow.svg');
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.app {
+  .box-sizing(border-box);
+  width: 100%;
+  overflow-x: hidden;
+  padding-top: 55px;
+}
+
+.image-contain {
+  .box-sizing(border-box);
+  padding-right: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.closing {
+  overflow-y: hidden;
+}
+
+.dropbox-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  margin-top: (-85/2)px;
+  width: 100px;
+  height: 85px;
+  background-size: 100px;
+  background-image: url('./assets/dropbox.svg');
+}
+
+.garbage-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: (-85/2)px;
+  width: 100px;
+  height: 85px;
+  background-size: 100px;
+  background-image: url('./assets/garbage.svg');
 }
 
 .image {
+  .box-sizing(border-box);
   .rounded-corners();
   .box-shadow(0, 3px, 0, #777777);
 
-  width: 100%;
-  height: 600px;
-
   position: relative;
+  z-index: 10;
   padding: 10px;
   margin: 5px 5px 12px;
   float: left;
+  width: 100%;
 
   background-color: white;
 
   IMG {
     .unselectable();
   }
+}
+
+.transition-all {
+  .transition(all, 0.2s, ease-in-out);
+}
+
+.scroll-disabled {
+  overflow: hidden;
+}
+
+.fullWidth {
+  width: 100%;
 }

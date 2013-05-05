@@ -2,6 +2,8 @@
   <head>
     <link rel="stylesheet/less" href="index.less">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="./lib/handlebars.js"></script>
     <script src="./lib/underscore.js"></script>
@@ -13,12 +15,33 @@
     <script src="./src/app.js"></script>
   </head>
   <body>
-    <div class="app">
+    <header>
+      <div class="fullWidth cf">
+        <div class="title"></div>
+        <div class="arrow"></div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="app">
+      </div>
     </div>
   </body>
 
+  <script type="text/x-handlebars" id="tmpl-header">
+    <ul class="expand">
+      {{#each items}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>    
+  </script>
+
   <script type="text/x-handlebars" id="tmpl-image">
-    <div id="img_{{id}}" class="image">
+    <div id="img_{{id}}" class="image-contain cf">
+      <div class="image">
+        <img src="{{image}}"/>
+      </div>
+      <div class="dropbox-icon"></div>
+      <div class="garbage-icon"></div>
     </div>
   </script>
 
