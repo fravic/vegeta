@@ -1,14 +1,14 @@
-$(function() {
+var app = app || {};
+
+$(function($) {
     "use strict";
 
-    window.App = window.App ? window.App : Ember.Application.create();
-
-    App.ApplicationController = Ember.Controller.extend({
+    app.AppView = Backbone.View.extend({
         SOURCES: ['designporn', 'earthporn'],
 
         IMAGE_PADDING: 30,
 
-        init: function() {
+        initialize: function() {
             var width;
             width = $("BODY").width() - this.IMAGE_PADDING;
             this.getImagesForSubreddit(this.SOURCES[0], width, this.renderImages);
@@ -36,10 +36,13 @@ $(function() {
 
         renderImages: function(images) {
             $.each(images, function(idx, image) {
-                App.ImageView.create({
+                new app.ImageView({
+                    id: idx,
                     image: image
-                }).append();
+                });
             });
         }
     });
+
+    var view = new app.AppView();
 });
