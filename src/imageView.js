@@ -14,7 +14,7 @@ $(function($) {
             var template = Handlebars.compile($("#tmpl-image").html());
             $(".app").append(template({image: a.image, id: a.id}));
             this.dom = $("#img_" + a.id);
-            this.dom.hammer().on("drag", this.drag);
+            this.dom.hammer().on("dragright", this.drag);
         },
 
         drag: function(evt) {
