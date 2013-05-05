@@ -4,7 +4,7 @@ $(function($) {
     "use strict";
 
     app.ImageView = Backbone.View.extend({
-        MAX_DRAG_X: 300,
+        MAX_DRAG_X: 200,
 
         initialize: function(a) {
             _.bindAll(this);
@@ -59,9 +59,7 @@ $(function($) {
             var top = Math.abs(prog) * 100;
             var opacity = 1 - prog/1.5;
             $(".image", this.dom).css({
-                transform: "rotate(" + deg + "deg)",
                 left: left + "px",
-                top: top + "px",
                 opacity: opacity,
             });
 
