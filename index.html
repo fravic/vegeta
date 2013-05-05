@@ -4,7 +4,8 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="./lib/handlebars.js"></script>
-    <script src="./lib/ember.js"></script>
+    <script src="./lib/underscore.js"></script>
+    <script src="./lib/backbone.js"></script>
     <script src="./lib/less.js"></script>
     <script src="./lib/hammer.jquery.js"></script>
 
@@ -12,16 +13,13 @@
     <script src="./src/app.js"></script>
   </head>
   <body>
-  </body>
-
-  <script type="text/x-handlebars">
     <div class="app">
     </div>
-  </script>
+  </body>
 
-  <script type="text/x-handlebars" data-template-name="image">
-    <div class="image">
-      <img {{bindAttr src="view.image"}}/>
+  <script type="text/x-handlebars" id="tmpl-image">
+    <div id="img_{{id}}" class="image">
+      <img src="{{image}}"/>
     </div>
   </script>
 
