@@ -46,14 +46,37 @@ BODY {
   background-color: #E0E0E0;
 }
 
+.image-contain {
+}
+
+.dropbox-icon {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  margin-top: (-175/2)px;
+  width: 200px;
+  height: 175px;
+  background-size: 200px;
+  background-image: url('./assets/dropbox.svg');
+}
+
+.garbage-icon {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  margin-top: (-175/2)px;
+  width: 200px;
+  height: 175px;
+  background-size: 200px;
+  background-image: url('./assets/garbage.svg');
+}
+
 .image {
   .rounded-corners();
   .box-shadow(0, 3px, 0, #777777);
 
-  width: 100%;
-  height: 600px;
-
   position: relative;
+  z-index: 10;
   padding: 10px;
   margin: 5px 5px 12px;
   float: left;
