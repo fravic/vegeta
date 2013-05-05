@@ -22,13 +22,11 @@ $(function($) {
             document.ontouchmove = function(event){
                 event.preventDefault();
             }
-
-            console.log("init");
         },
 
         dragStart: function() {
             $(".image", this.dom).removeClass("transition-all");
-            this.dom.css({height: $(".image", this.dom).outerHeight() + 12});
+            this.dom.css({height: $(".image", this.dom).outerHeight() + 14});
             $("BODY, .container, .app").addClass("scroll-disabled");
         },
 

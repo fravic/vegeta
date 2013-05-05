@@ -12,7 +12,7 @@ $(function($) {
     });
 
     app.AppView = Backbone.View.extend({
-        SOURCES: ['DesignPorn', 'EarthPorn'],
+        SOURCES: ['DesignPorn', 'EarthPorn', 'WaterPorn', 'SkyPorn', 'FirePorn', 'WinterPorn', 'CityPorn'],
 
         IMAGE_PADDING: 30,
 
@@ -48,6 +48,7 @@ $(function($) {
            var width;
             width = $("BODY").width() - this.IMAGE_PADDING;
             this.getImagesForSubreddit(evt.toElement.lastChild.data, width, this.renderImages);
+            this.headerClick();
         },
         
         getImagesForSubreddit: function(subreddit, width, callback) {
