@@ -24,6 +24,7 @@ $(function($) {
             this.getImagesForSubreddit(this.SOURCES[0], width, this.renderImages);
 
             $("HEADER .arrow, HEADER .title").click(this.headerClick);
+            this.lastId = 0;
         },
 
         headerClick: function() {
@@ -76,10 +77,13 @@ $(function($) {
             $(".kill").fadeOut(function() {
                 $(".kill").remove();
             });
+            var _self = this;
+            var start = this.lastId + 1;
 
             $.each(images, function(idx, image) {
+                _self.lastId = idx + start;
                 new app.ImageView({
-                    id: idx,
+                    id: _self.lastId,
                     image: image
                 });
             });

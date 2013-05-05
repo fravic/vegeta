@@ -22,6 +22,8 @@ $(function($) {
             document.ontouchmove = function(event){
                 event.preventDefault();
             }
+
+            console.log("init");
         },
 
         dragStart: function() {
