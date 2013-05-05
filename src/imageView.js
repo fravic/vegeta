@@ -32,7 +32,10 @@ $(function($) {
         dragStart: function() {
             $(".image", this.dom).removeClass("transition-all");
             this.dom.css({height: $(".image", this.dom).outerHeight()});
-            $(".container, .app").addClass("scroll-disabled");
+            $("BODY, .container, .app").addClass("scroll-disabled");
+            document.ontouchmove = function(event){
+                event.preventDefault();
+            }
         },
 
         dragEnd: function(evt) {
@@ -48,7 +51,9 @@ $(function($) {
                 $(".image", this.dom).addClass("transition-all");
                 this.setDragProgress(0);
             }
-            $(".container, .app").removeClass("scroll-disabled");
+            $("BODY, .container, .app").removeClass("scroll-disabled");
+            document.ontouchmove = function(event){
+            }
         },
 
         setDragProgress: function(prog) {
@@ -67,12 +72,12 @@ $(function($) {
                 var dbLeft = 50 + prog * 100;
                 db.show();
                 gb.hide();
-                db.css({opacity: prog, left: dbLeft});
+                db.css({opacity: prog});
             } else {
                 var gbRight = 50 + Math.abs(prog) * 100;
                 gb.show();
                 db.hide();
-                gb.css({opacity: Math.abs(prog), right: gbRight});
+                gb.css({opacity: Math.abs(prog)});
             }
         },
 
