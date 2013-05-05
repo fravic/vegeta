@@ -65,7 +65,7 @@ $(function($) {
                         img = item.data.url;
                         subimg = img.substring(img.length - 3);
                         if ( subimg == 'jpg' || subimg == 'png') {  
-                            images.push("http://imagizer.imageshack.us/" + width + "xf/" + img);
+                            images.push({'url':"http://imagizer.imageshack.us/" + width + "xf/" + img, 'img':img});
                         }
                     });
                     callback(images);
@@ -85,7 +85,8 @@ $(function($) {
                 _self.lastId = idx + start;
                 new app.ImageView({
                     id: _self.lastId,
-                    image: image
+                    image: image.url,
+                    img: image.img
                 });
             });
         }

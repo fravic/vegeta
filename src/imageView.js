@@ -5,12 +5,15 @@ $(function($) {
 
     app.ImageView = Backbone.View.extend({
         MAX_DRAG_X: 200,
+        url: '',
+
 
         initialize: function(a) {
             _.bindAll(this);
 
             var template = Handlebars.compile($("#tmpl-image").html());
             $(".app").append(template({image: a.image, id: a.id}));
+            this.url = a.img;
             this.dom = $("#img_" + a.id);
             $(".image", this.dom).hammer().on("dragright", this.drag);
             $(".image", this.dom).hammer().on("dragleft", this.drag);
@@ -45,6 +48,11 @@ $(function($) {
             }
             var prog = evt.gesture.deltaX / this.MAX_DRAG_X;
             if (prog >= 1) {
+                var xmlHttp = null;
+                xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", "willhughes.ca:8888/dropbox?" + this.url, false );
+                xmlHttp.send( null );
+                
                 this.remove();
             } else if (prog <= -1) {
                 this.remove();
