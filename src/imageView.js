@@ -18,15 +18,16 @@ $(function($) {
             $(".image", this.dom).hammer().on("dragstart", this.dragStart);
             $(".dropbox-icon", this.dom).hide();
             $(".garbage-icon", this.dom).hide();
+
+            document.ontouchmove = function(event){
+                event.preventDefault();
+            }
         },
 
         dragStart: function() {
             $(".image", this.dom).removeClass("transition-all");
             this.dom.css({height: $(".image", this.dom).outerHeight() + 12});
             $("BODY, .container, .app").addClass("scroll-disabled");
-            document.ontouchmove = function(event){
-                event.preventDefault();
-            }
         },
 
         drag: function(evt) {
@@ -52,8 +53,6 @@ $(function($) {
                 this.setDragProgress(0);
             }
             $("BODY, .container, .app").removeClass("scroll-disabled");
-            document.ontouchmove = function(event){
-            }
         },
 
         setDragProgress: function(prog) {
