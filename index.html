@@ -2,28 +2,27 @@
   <head>
     <link rel="stylesheet/less" href="index.less">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
-    </script>
-    <script src="./lib/handlebars.js">
-    </script>
-    <script src="./lib/ember.js">
-    </script>
-    <script src="./lib/backend.js">
-    </script>
-    <script src="./lib/less.js">
-    </script>
-    <script src="./src/app.js">
-    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="./lib/handlebars.js"></script>
+    <script src="./lib/ember.js"></script>
+    <script src="./lib/less.js"></script>
+    <script src="./lib/hammer.jquery.js"></script>
+
+    <script src="./src/imageView.js"></script>
+    <script src="./src/app.js"></script>
   </head>
   <body>
   </body>
 
-  <script type="text/x-handlebars" data-template-name="imageList">
-    {{#each image in view.images}}
-    <div class="image">
-      <img {{bindAttr src="image"}}/>
+  <script type="text/x-handlebars">
+    <div class="app">
     </div>
-    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="image">
+    <div class="image">
+      <img {{bindAttr src="view.image"}}/>
+    </div>
   </script>
 
 </html>

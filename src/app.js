@@ -1,6 +1,7 @@
 $(function() {
     "use strict";
-    window.App = Ember.Application.create();
+
+    window.App = window.App ? window.App : Ember.Application.create();
 
     App.ApplicationController = Ember.Controller.extend({
         SOURCES: ['designporn', 'earthporn'],
@@ -34,10 +35,11 @@ $(function() {
         },
 
         renderImages: function(images) {
-            Ember.View.create({
-                templateName: 'imageList',
-                images: images
-            }).append();
+            $.each(images, function(idx, image) {
+                App.ImageView.create({
+                    image: image
+                }).append();
+            });
         }
     });
 });
