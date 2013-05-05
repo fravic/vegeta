@@ -21,7 +21,7 @@ $(function($) {
 
         drag: function(evt) {
             $(".image", this.dom).removeClass("transition-all");
-            this.dom.css({height: $(".image", this.dom).outerHeight()});
+            this.dom.css({height: $(".image", this.dom).outerHeight() + 12});
             $("BODY, .container, .app").addClass("scroll-disabled");
             document.ontouchmove = function(event){
                 event.preventDefault();
