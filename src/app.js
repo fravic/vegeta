@@ -3,6 +3,14 @@ var app = app || {};
 $(function($) {
     "use strict";
 
+    window.addEventListener("load",function() {
+        // Set a timeout...
+        setTimeout(function(){
+            // Hide the address bar!
+            window.scrollTo(0, 1);
+        }, 0);
+    });
+
     app.AppView = Backbone.View.extend({
         SOURCES: ['DesignPorn', 'EarthPorn'],
 
