@@ -16,6 +16,8 @@ $(function($) {
             this.dom = $("#img_" + a.id);
             $(".image", this.dom).hammer().on("dragright", this.drag);
             $(".image", this.dom).hammer().on("dragleft", this.drag);
+            $(".image", this.dom).hammer().on("dragstart", this.dragStart);
+            $(".image", this.dom).hammer().on("dragend", this.dragEnd);
             $(".dropbox-icon", this.dom).hide();
             $(".garbage-icon", this.dom).hide();
         },
@@ -29,7 +31,24 @@ $(function($) {
             return false;
         },
 
-        dragLeave: function() {
+        dragStart: function() {
+            $(".image", this.dom).removeClass("transition-all");
+            this.dom.css({height: $(".image", this.dom).outerHeight()});
+        },
+
+        dragEnd: function(evt) {
+            if (!evt.gesture) {
+                return;
+            }
+            var prog = evt.gesture.deltaX / this.MAX_DRAG_X;
+            if (prog >= 1) {
+                this.remove();
+            } else if (prog <= -1) {
+                this.remove();
+            } else {
+                $(".image", this.dom).addClass("transition-all");
+                this.setDragProgress(0);
+            }
         },
 
         setDragProgress: function(prog) {
@@ -59,5 +78,10 @@ $(function($) {
                 gb.css({opacity: Math.abs(prog), right: gbRight});
             }
         },
+
+        remove: function() {
+            this.dom.addClass("closing transition-all");
+            this.dom.css({height: 0});
+        }
     });
 });

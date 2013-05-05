@@ -60,6 +60,10 @@ BODY {
   position: relative;
 }
 
+.closing {
+  overflow-y: hidden;
+}
+
 .dropbox-icon {
   position: absolute;
   left: 50px;
@@ -97,4 +101,8 @@ BODY {
   IMG {
     .unselectable();
   }
+}
+
+.transition-all {
+  .transition(all, 0.2s, ease-in-out);
 }
