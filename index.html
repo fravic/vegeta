@@ -17,13 +17,15 @@
     <link rel="stylesheet/less" href="index.less">
   </head>
   <body>
-  <div id="images">
+    <div id="images">
   </body>
 </html>
 
-<script type="text/x-handlebars" data-template-name="thread">
-  <div class="thread">
-    Thread
+<script type="text/x-handlebars" data-template-name="imageList">
+  {{#each images}}
+  <div class="image">
+    <img src="{{this}}" />
   </div>
+  {{/each}}
 </script>
 
