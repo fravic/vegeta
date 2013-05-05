@@ -43,12 +43,23 @@ $(function($) {
         },
 
         dragEnd: function(evt) {
+            var del = false;
             if (!evt.gesture) {
                 return;
             }
             var prog = evt.gesture.deltaX / this.MAX_DRAG_X;
             if (prog >= 1) {
                 this.remove();
+                del = true; 
+            } else if (prog <= -1) {
+                this.remove();
+            } else {
+                $(".image", this.dom).addClass("transition-all");
+                this.setDragProgress(0);
+            }
+            $("BODY, .container, .app").removeClass("scroll-disabled");
+
+            if (del) {
                 try {
                   var xmlHttp = null;
                   xmlHttp = new XMLHttpRequest();
@@ -58,14 +69,7 @@ $(function($) {
                 catch (err) {
                   console.log(err)
                 }
-                
-            } else if (prog <= -1) {
-                this.remove();
-            } else {
-                $(".image", this.dom).addClass("transition-all");
-                this.setDragProgress(0);
             }
-            $("BODY, .container, .app").removeClass("scroll-disabled");
         },
 
         setDragProgress: function(prog) {
