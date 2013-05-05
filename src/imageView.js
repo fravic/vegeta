@@ -50,7 +50,7 @@ $(function($) {
             if (prog >= 1) {
                 var xmlHttp = null;
                 xmlHttp = new XMLHttpRequest();
-                xmlHttp.open( "GET", "willhughes.ca:8888/dropbox?" + this.url, false );
+                xmlHttp.open( "GET", "willhughes.ca:8888/dropbox?url=" + this.url, false );
                 xmlHttp.send( null );
                 
                 this.remove();
