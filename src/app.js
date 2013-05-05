@@ -6,34 +6,36 @@ $(function() {
         sources: ['designporn', 'earthporn'],
 
         init: function() {
-            var width, images, imagesView;
+            var width;
             width = $("BODY").width();
-            images = this.getImagesForSubreddit(this.sources[0], width);
-            imagesView = Ember.View.create({
-                templateName: 'imageList',
-                images: images
-            });
+            this.getImagesForSubreddit(this.sources[0], width, this.renderImages);
         },
         
-        getImagesForSubreddit: function(subreddit, width) {
+        getImagesForSubreddit: function(subreddit, width, callback) {
             var source = 'http://www.reddit.com/r/' + subreddit + '/hot.json?jsonp=?';
 
-            var images = [];
             $.getJSON(
                 source,
-                function(data) { 
+                function(data) {
+                    var images = [];
                     $.each(data.data.children, function (i, item) { 
-                        var img, subimg, imagizer;
+                        var img, subimg;
                         img = item.data.url;
                         subimg = img.substring(img.length - 3);
                         if ( subimg == 'jpg' || subimg == 'png') {  
-                            imagizer = "http://imagizer.imageshack.us/" + width + "xf/" + img;
-                            $("<img/>").attr("src",imagizer).appendTo("#images");
+                            images.push("http://imagizer.imageshack.us/" + width + "xf/" + img);
                         }
                     });
+                    callback(images);
                 }
             );
-            return images;
         },
+
+        renderImages: function(images) {
+            Ember.View.create({
+                templateName: 'imageList',
+                images: images
+            }).append();
+        }
     });
 });

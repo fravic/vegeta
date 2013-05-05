@@ -1,1 +1,46 @@
 @import "reset";
+
+// MIXINS
+
+.rounded-corners (@radius: 3px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.box-shadow(@x, @y, @blur, @color) {
+  -moz-box-shadow: @x @y @blur @color;
+  -webkit-box-shadow: @x @y @blur @color;
+  box-shadow: @x @y @blur @color;
+}
+
+.inner-shadow(@x, @y, @blur, @color) {
+  -moz-box-shadow: inset @x @y @blur @color;
+  -webkit-box-shadow: inset @x @y @blur @color;
+  box-shadow: inset @x @y @blur @color;
+}
+
+.box-sizing (@val) {
+  -moz-box-sizing: @val; // Damn it, Mozilla.
+  box-sizing: @val;
+}
+
+.transition (@property, @duration, @timingFunc: linear, @delay: 0s) {
+  -moz-transition: @property @duration @timingFunc @delay;
+  -webkit-transition: @property @duration @timingFunc @delay;
+  transition: @property @duration @timingFunc @delay;
+}
+
+// STYLES
+
+BODY {
+  margin: 0;
+  background-color: #E0E0E0;
+}
+
+.image {
+  .rounded-corners();
+  padding: 10px;
+
+  background-color: white;
+}
