@@ -32,7 +32,7 @@ $(function($) {
         dragStart: function() {
             $(".image", this.dom).removeClass("transition-all");
             this.dom.css({height: $(".image", this.dom).outerHeight()});
-            $("BODY").addClass("scroll-disabled");
+            $("BODY, .app").addClass("scroll-disabled");
         },
 
         dragEnd: function(evt) {
@@ -48,15 +48,13 @@ $(function($) {
                 $(".image", this.dom).addClass("transition-all");
                 this.setDragProgress(0);
             }
-
-            $("BODY").removeClass("scroll-disabled");
+            $("BODY, .app").removeClass("scroll-disabled");
         },
 
         setDragProgress: function(prog) {
             prog = Math.min(Math.max(prog, -1), 1);
             var deg = prog * 10;
-            var left = prog * 400;
-            var top = Math.abs(prog) * 100;
+            var left = prog * 150;
             var opacity = 1 - prog/1.5;
             $(".image", this.dom).css({
                 left: left + "px",
