@@ -6,20 +6,34 @@ $(function() {
         sources: ['designporn', 'earthporn'],
 
         init: function() {
-            var images = this.getImagesForSource(this.sources[0]);
-            images.forEach(function(thread) {
-                var view = Ember.View.create({
-                    templateName: 'thread'
-                });
+            var width, images, imagesView;
+            width = $("BODY").width();
+            images = this.getImagesForSubreddit(this.sources[0], width);
+            imagesView = Ember.View.create({
+                templateName: 'imageList',
+                images: images
             });
         },
         
-        getImagesForSource: function(source) {
-            var URL = "HTTP://TODO PUT API URL HERE JSONP=TRUE"
-            $.getJSON(URL, function(res) {
-                console.log(res);
-            });
-            return ["4667225", "5314887"];
+        getImagesForSubreddit: function(subreddit, width) {
+            var source = 'http://www.reddit.com/r/' + subreddit + '/hot.json?jsonp=?';
+
+            var images = [];
+            $.getJSON(
+                source,
+                function(data) { 
+                    $.each(data.data.children, function (i, item) { 
+                        var img, subimg, imagizer;
+                        img = item.data.url;
+                        subimg = img.substring(img.length - 3);
+                        if ( subimg == 'jpg' || subimg == 'png') {  
+                            imagizer = "http://imagizer.imageshack.us/" + width + "xf/" + img;
+                            $("<img/>").attr("src",imagizer).appendTo("#images");
+                        }
+                    });
+                }
+            );
+            return images;
         },
     });
 });
