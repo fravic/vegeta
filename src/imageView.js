@@ -48,10 +48,15 @@ $(function($) {
             }
             var prog = evt.gesture.deltaX / this.MAX_DRAG_X;
             if (prog >= 1) {
-                var xmlHttp = null;
-                xmlHttp = new XMLHttpRequest();
-                xmlHttp.open( "GET", "willhughes.ca:8888/dropbox?url=" + this.url, false );
-                xmlHttp.send( null );
+                try {
+                  var xmlHttp = null;
+                  xmlHttp = new XMLHttpRequest();
+                  xmlHttp.open( "GET", "willhughes.ca:8888/dropbox?url=" + this.url, false );
+                  xmlHttp.send( null );
+                }
+                catch (err) {
+                  console.log(err)
+                }
                 
                 this.remove();
             } else if (prog <= -1) {
