@@ -14,28 +14,25 @@ $(function($) {
             this.dom = $("#img_" + a.id);
             $(".image", this.dom).hammer().on("dragright", this.drag);
             $(".image", this.dom).hammer().on("dragleft", this.drag);
-            $(".image", this.dom).hammer().on("dragstart", this.dragStart);
             $(".image", this.dom).hammer().on("dragend", this.dragEnd);
             $(".dropbox-icon", this.dom).hide();
             $(".garbage-icon", this.dom).hide();
         },
 
         drag: function(evt) {
-            if (!evt.gesture) {
-                return;
-            }
-            this.setDragProgress(evt.gesture.deltaX / this.MAX_DRAG_X);
-            evt.stopPropagation();
-            return false;
-        },
-
-        dragStart: function() {
             $(".image", this.dom).removeClass("transition-all");
             this.dom.css({height: $(".image", this.dom).outerHeight()});
             $("BODY, .container, .app").addClass("scroll-disabled");
             document.ontouchmove = function(event){
                 event.preventDefault();
             }
+
+            if (!evt.gesture) {
+                return;
+            }
+            this.setDragProgress(evt.gesture.deltaX / this.MAX_DRAG_X);
+            evt.stopPropagation();
+            return false;
         },
 
         dragEnd: function(evt) {
