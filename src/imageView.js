@@ -24,13 +24,12 @@ $(function($) {
             $(".image", this.dom).removeClass("transition-all");
             this.dom.css({height: $(".image", this.dom).outerHeight() + 12});
             $("BODY, .container, .app").addClass("scroll-disabled");
-        },
-
-        drag: function(evt) {
             document.ontouchmove = function(event){
                 event.preventDefault();
             }
+        },
 
+        drag: function(evt) {
             if (!evt.gesture) {
                 return;
             }
