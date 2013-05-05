@@ -48,6 +48,7 @@ $(function($) {
             }
             var prog = evt.gesture.deltaX / this.MAX_DRAG_X;
             if (prog >= 1) {
+                this.remove();
                 try {
                   var xmlHttp = null;
                   xmlHttp = new XMLHttpRequest();
@@ -58,7 +59,6 @@ $(function($) {
                   console.log(err)
                 }
                 
-                this.remove();
             } else if (prog <= -1) {
                 this.remove();
             } else {
