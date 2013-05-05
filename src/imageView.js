@@ -14,7 +14,8 @@ $(function($) {
             var template = Handlebars.compile($("#tmpl-image").html());
             $(".app").append(template({image: a.image, id: a.id}));
             this.dom = $("#img_" + a.id);
-            $(".image", this.dom).hammer().on("drag", this.drag);
+            $(".image", this.dom).hammer().on("dragright", this.drag);
+            $(".image", this.dom).hammer().on("dragleft", this.drag);
             $(".dropbox-icon", this.dom).hide();
             $(".garbage-icon", this.dom).hide();
         },
@@ -33,7 +34,7 @@ $(function($) {
 
         setDragProgress: function(prog) {
             prog = Math.min(Math.max(prog, -1), 1);
-            var deg = prog * 40;
+            var deg = prog * 10;
             var left = prog * 400;
             var top = Math.abs(prog) * 100;
             var opacity = 1 - prog/1.5;
