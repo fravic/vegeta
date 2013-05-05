@@ -50,6 +50,37 @@ BODY {
   background-color: #E0E0E0;
 }
 
+HEADER {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 11;
+
+  background-color: rgba(0, 0, 0, .85);
+}
+
+.title {
+  float: left;
+  margin-top: 10px;
+  margin-left: 15px;
+
+  font-family: "Helvetica", sans-serif;
+  font-size: 50px;
+  font-weight: 100;
+  color: white;
+}
+
+.arrow {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin-top: 25px;
+  margin-right: 25px;
+  background-size: 30px;
+  background-image: url('./assets/arrow.svg');
+}
+
 .app {
   .box-sizing(border-box);
   width: 100%;

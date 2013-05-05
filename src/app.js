@@ -4,7 +4,7 @@ $(function($) {
     "use strict";
 
     app.AppView = Backbone.View.extend({
-        SOURCES: ['designporn', 'earthporn'],
+        SOURCES: ['DesignPorn', 'EarthPorn'],
 
         IMAGE_PADDING: 30,
 
@@ -15,6 +15,8 @@ $(function($) {
         },
         
         getImagesForSubreddit: function(subreddit, width, callback) {
+            $(".title").html(subreddit);
+
             var source = 'http://www.reddit.com/r/' + subreddit + '/hot.json?jsonp=?';
 
             $.getJSON(
