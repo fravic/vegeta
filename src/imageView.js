@@ -13,8 +13,8 @@ $(function($) {
 
             var template = Handlebars.compile($("#tmpl-image").html());
             $(".app").append(template({image: a.image, id: a.id}));
-
-            $("#img_" + a.id).hammer().on("drag", this.drag);
+            this.dom = $("#img_" + a.id);
+            this.dom.hammer().on("drag", this.drag);
         },
 
         drag: function(evt) {
@@ -31,6 +31,14 @@ $(function($) {
 
         setDragProgress: function(prog) {
             prog = Math.min(Math.max(prog, 0), 1);
+            var deg = prog * 40;
+            var left = prog * 200;
+            var top = prog * 100;
+            this.dom.css({
+                transform: "rotate(" + deg + "deg)",
+                left: left + "px",
+                top: top + "px",
+            });
         },
     });
 });
