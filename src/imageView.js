@@ -34,6 +34,7 @@ $(function($) {
         dragStart: function() {
             $(".image", this.dom).removeClass("transition-all");
             this.dom.css({height: $(".image", this.dom).outerHeight()});
+            $(".app").addClass("scroll-disabled");
         },
 
         dragEnd: function(evt) {
@@ -49,6 +50,8 @@ $(function($) {
                 $(".image", this.dom).addClass("transition-all");
                 this.setDragProgress(0);
             }
+
+            $(".app").removeClass("scroll-disabled");
         },
 
         setDragProgress: function(prog) {

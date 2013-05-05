@@ -51,11 +51,14 @@ BODY {
 }
 
 .app {
+  .box-sizing(border-box);
   width: 100%;
   overflow-x: hidden;
 }
 
 .image-contain {
+  .box-sizing(border-box);
+  padding-right: 10px;
   width: 100%;
   position: relative;
 }
@@ -87,6 +90,7 @@ BODY {
 }
 
 .image {
+  .box-sizing(border-box);
   .rounded-corners();
   .box-shadow(0, 3px, 0, #777777);
 
@@ -95,6 +99,7 @@ BODY {
   padding: 10px;
   margin: 5px 5px 12px;
   float: left;
+  width: 100%;
 
   background-color: white;
 
@@ -105,4 +110,8 @@ BODY {
 
 .transition-all {
   .transition(all, 0.2s, ease-in-out);
+}
+
+.scroll-disabled {
+  overflow: hidden;
 }
